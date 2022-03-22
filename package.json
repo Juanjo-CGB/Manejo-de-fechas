@@ -1,0 +1,27 @@
+{
+  "name": "fechas",
+  "version": "1.0.0",
+  "description": "Manejo de fechas en JavaScript",
+  "main": "main.js",
+  "scripts": {
+    "jsdoc": "npx jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juanjo-CGB/Manejo-de-fechas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juanjo-CGB/Manejo-de-fechas/issues"
+  },
+  "homepage": "https://github.com/Juanjo-CGB/Manejo-de-fechas#readme",
+  "dependencies": {
+    "jsdoc": "^3.6.10",
+    "minami": "^1.2.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}

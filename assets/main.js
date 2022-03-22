@@ -1,5 +1,5 @@
 /**
- * @fileoverview Manejando fechas para pintarlas en un menú de cualquier sitio
+ * @fileoverview Manejando fechas para pintarlas en cualquier sección de una página web 
  * @version 0.1
  * @author Juanjo Alonso Sánchez <jj.alonso@esla.com>
  * @copyright cgb@esla.com
