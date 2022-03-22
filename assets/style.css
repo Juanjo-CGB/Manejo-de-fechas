@@ -110,7 +110,8 @@ header {
     gap: 0.5rem;
     cursor: pointer;
 }
-.contact__schedule:hover > .contact__schedule-text, .contact__schedule:hover > .contact__icon--light {
+.contact__schedule:hover > .contact__schedule-text, 
+.contact__schedule:hover > .contact__icon--light {
     color: var(--text-color-menu);
 }
 .contact__schedule:hover > .contact__submenu {
@@ -121,6 +122,10 @@ header {
     width: auto;
     transition: display 0.5s;
 }
+.contact__schedule-state {
+    font-size: calc(var(--font-size) - 0.25rem);
+    font-weight: 700;
+  }
 .contact__schedule-state--open {
     color: #5dcd9f;
 }
