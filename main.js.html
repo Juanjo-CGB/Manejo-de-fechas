@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>main.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Inicio</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#establecerHora">establecerHora</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#monthNames">monthNames</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#pintarHorario">pintarHorario</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#rellenarCeros">rellenarCeros</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#weekDaysNames">weekDaysNames</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">main.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Manejando fechas para pintarlas en cualquier sección de una página web 
+ * @version 0.1
+ * @author Juanjo Alonso Sánchez &lt;jj.alonso@esla.com>
+ * @copyright cgb@esla.com
+ */
+ "use strict";
+
+ //--VARIABLES
+  /**
+  * Array con los nombres de los meses del año
+  * @type {number}
+  */
+   let monthNames = [ "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" ];
+  /**
+  * Array con los nombres de los días de la semana
+  * @type {number}
+  */
+   let weekDaysNames = [ "domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado" ];
+
+   //--FUNCIONES
+  /**
+  * Añade ceros a un número. Si el número dado es menor que la longitud solicitada, rellena automáticamente el número con ceros hasta alcanzar la longitud
+  * @param {number} numero Número
+  * @param {number} longitudCifra Longitud del número
+  * @returns {string} Número con ceros
+  */
+function rellenarCeros(numero, longitudCifra) {
+    let valorNumero = Math.abs(numero).toString();
+    let longitudNumero = numero.toString().length;
+    let cero = "0"; 
+    
+    if(Number(longitudNumero) &lt; longitudCifra){
+        return (cero + valorNumero);
+    }else{
+        return numero.toString();
+    }
+}
+/**
+  * Establece el día, la hora y los minutos
+  * @returns {void}
+  */
+ function establecerHora(){ 
+    const today = new Date();
+    const longitudCifra = 2;
+    const nodoHora = document.querySelector(".date__hour");
+    const nodoDia = document.querySelector(".date__day");
+    let horas = rellenarCeros(today.getHours(), longitudCifra);
+    let minutos = rellenarCeros(today.getMinutes(), longitudCifra);
+    let diaSemana = weekDaysNames[today.getDay()];
+    const hour = horas + ':' + minutos;    
+    const getDia = rellenarCeros(today.getDate(), longitudCifra);
+    const day = `${diaSemana}, ${getDia} de ${monthNames[today.getMonth()]} de ${today.getFullYear()}`;
+    
+    nodoHora.innerHTML = hour;  
+    nodoDia.innerHTML = day; 
+    
+    setInterval(()=> {        
+        establecerHora();
+    }, 1000);
+}
+/**
+  * Pinta el texto del horario de atención de un color u otro dependiendo si el servicio está o no disponible
+  * @returns {void}
+  */
+ function pintarHorario(){ 
+    const estadoHorario = document.querySelector(".contact__schedule-state");
+    const diasDisponibles = document.querySelectorAll(".contact__submenu-text");
+    const horasDisponibles = [8, 20];
+    const today = new Date();
+    let diaSemana = weekDaysNames[today.getDay()];
+    let hora = Number(today.getHours());
+    let servicioDisponible = false;
+    
+    diasDisponibles.forEach( (horario)=> {
+            if (horario.innerHTML === diaSemana) {
+                horario.parentNode.classList.add('contact__submenu-item--background');
+                if (hora>=horasDisponibles[0] &amp;&amp; hora &lt; horasDisponibles[1]) {
+                    servicioDisponible = true;
+                }                
+            }
+        }
+    );   
+    if (servicioDisponible) {
+        estadoHorario.innerHTML = 'Abierto';
+        estadoHorario.classList.add('contact__schedule-state--open');
+    } else {
+        estadoHorario.innerHTML = 'Cerrado';
+        estadoHorario.classList.add('contact__schedule-state--close');
+    }
+}
+
+//--CÓDIGO
+//Establecer fechas y pintar horarios
+establecerHora();
+pintarHorario();
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Tue Mar 22 2022 12:52:55 GMT+0100 (hora estándar de Europa central) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
