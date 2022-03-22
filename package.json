@@ -4,7 +4,8 @@
   "description": "Manejo de fechas en JavaScript",
   "main": "main.js",
   "scripts": {
-    "jsdoc": "npx jsdoc -c jsdoc.json"
+    "jsdoc": "npx jsdoc -c jsdoc.json",
+    "deploy": "gh-pages -d docs"
   },
   "repository": {
     "type": "git",
