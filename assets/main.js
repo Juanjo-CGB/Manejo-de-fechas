@@ -45,6 +45,7 @@ function rellenarCeros(numero, longitudCifra) {
     const longitudCifra = 2;
     const nodoHora = document.querySelector(".date__hour");
     const nodoDia = document.querySelector(".date__day");
+    const nodoYear = document.querySelector(".footer__copy-year"); 
     let horas = rellenarCeros(today.getHours(), longitudCifra);
     let minutos = rellenarCeros(today.getMinutes(), longitudCifra);
     let diaSemana = weekDaysNames[today.getDay()];
@@ -54,6 +55,7 @@ function rellenarCeros(numero, longitudCifra) {
     
     nodoHora.innerHTML = hour;  
     nodoDia.innerHTML = day; 
+    nodoYear.innerHTML = today.getFullYear();
     
     setInterval(()=> {        
         establecerHora();

@@ -1,6 +1,6 @@
 :root {
     --primary-color: #0970a0;    
-    --background-primary-color: #0970a0; 
+    --background-primary-color: #222e33; 
     --background-secondary-color: #f6f6f6;   
     --border-color: #d6d6d6;
     --title-color: #0d0d0d;
@@ -177,8 +177,12 @@ footer {
     justify-content: center;
     background-color: var(--background-primary-color);
 }
-footer p {    
+.footer__copy {
+    font-weight: 500;
     color: var(--text-color-menu);
+}
+.footer__copy-jjasdev {
+    color: var(--primary-color);
 }
 
 /* Icons */
